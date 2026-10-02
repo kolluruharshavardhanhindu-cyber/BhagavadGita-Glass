@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bhagavad Gita – 18 Chapters</title>
+<!-- Website Favicon -->
+<link rel="icon" type="image/webp" href="Krishna.webp">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        saffron: '#ec6713',
+        parchment: '#f6ead7'
+      },
+      fontFamily: {
+        display: ['Manrope','Noto Sans Telugu','sans-serif']
+      }
+    }
+  }
+}
+</script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;600;700&family=Noto+Serif+Telugu:wght@400;600&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="glass.css?v=1">
+<script src="glass.js?v=1" defer></script>
+</head>
+
+<body class="min-h-screen">
+
+<!-- Additional-language sloka data (English, Hindi, Tamil, Kannada, Malayalam, Gujarati, Bengali, Odia) -->
+<script src="gita-data.js?v=29092026c"></script>
+
+<audio id="bell" preload="auto">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2a6ef6a8b0.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HOME -->
+<div id="home" class="max-w-7xl mx-auto p-6 fade">
+  <h1 class="text-center text-4xl font-extrabold mb-5 text-saffron">
+    Bhagavad Gita – 18 Sacred Chapters
+  </h1>
+
+  <!-- LANGUAGE SELECTOR -->
+  <div class="flex justify-center mb-10">
+    <select id="langSelect" onchange="changeLanguage(this.value)"
+      class="rounded-full px-4 py-2 text-sm font-bold shadow-lg border-2 cursor-pointer"
+      style="border-color:#ec6713;color:#ec6713;background:#fffaf0;">
+      <option value="te">తెలుగు (Telugu)</option>
+      <option value="en">English (English)</option>
+      <option value="hi">देवनागरी (Devanagari)</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+      <option value="kn">ಕನ್ನಡ (Kannada)</option>
+      <option value="ml">മലയാളം (Malayalam)</option>
+      <option value="gu">ગુજરાતી (Gujarati)</option>
+      <option value="bn">বাংলা (Bengali)</option>
+      <option value="or">ଓଡ଼ିଆ (Odia)</option>
+    </select>
+  </div>
+	  <div class="flex justify-center items-center gap-3 flex-wrap mb-10">
+			<button onclick="navigate('GitaTest.html')"
+				  class="rounded-full px-4 py-2 text-sm font-bold shadow-lg border-2 cursor-pointer"
+      style="border-color:#ec6713;color:#ec6713;background:#fffaf0;">
+				  <span id="gitaTestLabel">గీత పరీక్ష</span>
+				</button>
+			<button onclick="location.hash='dyana'"
+				  class="rounded-full px-4 py-2 text-sm font-bold shadow-lg border-2 cursor-pointer"
+      style="border-color:#ec6713;color:#ec6713;background:#fffaf0;">
+				  <span id="dyanaBtnLabel">ధ్యాన శ్లోకాలు</span>
+				</button>
+			<button onclick="location.hash='mahatyam'"
+				  class="rounded-full px-4 py-2 text-sm font-bold shadow-lg border-2 cursor-pointer"
+      style="border-color:#ec6713;color:#ec6713;background:#fffaf0;">
+				  <span id="mahatyamBtnLabel">గీతా మాహాత్మ్యం</span>
+				</button>
+	  </div>
+  <div id="chapterGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+  </div>
+  
+
+  <!-- Bottom Buttons -->
+  <div class="mt-14 flex justify-center gap-6 flex-wrap">
+    <button onclick="navigate('aboutus.html')"
+      class="px-6 py-3 rounded-full font-bold text-white bg-saffron shadow-lg hover:scale-105 transition">
+      <span id="aboutUsLabel">మా గురించి</span>
+    </button>
+    <button onclick="navigate('inspiration.html')"
+      class="px-6 py-3 rounded-full font-bold text-saffron bg-white shadow-lg hover:scale-105 transition">
+      <span id="inspirationLabel">ప్రేరణ</span>
+    </button>
+    <button onclick="navigate('GitaTest.html')"
+      class="px-6 py-3 rounded-full font-bold text-white shadow-lg hover:scale-105 transition"
+      style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+      <span id="gitaTestLabel">గీత పరీక్ష</span>
+    </button>
+  </div>
+</div>
+
+<!-- VIEWER -->
+<div id="viewer" class="hidden max-w-3xl mx-auto mt-10 p-8 fade rounded-2xl"
+style="background:linear-gradient(#fffaf0,#f3e2c7);box-shadow:inset 0 0 80px rgba(0,0,0,.15);">
+
+  <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+    <button onclick="goBack()" class="text-saffron font-bold">← Back</button>
+    <div class="flex items-center gap-2">
+      <button id="playAllBtn" onclick="openRangeModal(true)" class="play-all-btn">
+        <span class="material-symbols-outlined" style="font-size:18px;">playlist_play</span>
+        <span id="playAllLabel">Play All</span>
+      </button>
+      <button id="stopPlayAllBtn" onclick="stopPlayAllMode()" class="play-all-stop-btn hidden" title="Stop Play All">
+        <span class="material-symbols-outlined" style="font-size:18px;">stop_circle</span>
+      </button>
+    </div>
+  </div>
+
+  <h2 id="chapterTitle" class="text-2xl font-extrabold mb-6"></h2>
+  <div id="slokaContainer" class="space-y-4"></div>
+</div>
+
+<!-- RANGE PLAYER MODAL (used by both "Play All" and double-click-a-sloka) -->
+<div id="rangeModal" class="hidden">
+  <div class="play-all-modal-box range-modal-box">
+
+    <div class="flex justify-between items-center mb-3">
+      <h3 id="rangeModalTitle" class="text-lg font-extrabold text-saffron">Play Slokas</h3>
+      <button onclick="cancelRangeModal()" class="range-cancel-top" title="Cancel">
+        <span class="material-symbols-outlined" style="font-size:16px;">close</span>
+      </button>
+    </div>
+
+    <div class="range-field-row">
+      <div class="range-field">
+        <label>From</label>
+        <input id="rangeFrom" class="play-all-input" type="number" min="1" value="1" />
+      </div>
+      <div class="range-field">
+        <label>To</label>
+        <input id="rangeTo" class="play-all-input" type="number" min="1" value="1" />
+      </div>
+    </div>
+
+    <div class="range-field mt-3">
+      <label>Iterations (1–20)</label>
+      <input id="rangeIterations" class="play-all-input" type="number" min="1" max="20" value="1" />
+    </div>
+
+    <div class="range-field mt-3">
+      <label>Speed</label>
+      <div class="range-speed-group">
+        <button type="button" class="range-speed-btn" data-speed="0.75">0.75x</button>
+        <button type="button" class="range-speed-btn active" data-speed="1">1x</button>
+        <button type="button" class="range-speed-btn" data-speed="1.25">1.25x</button>
+        <button type="button" class="range-speed-btn" data-speed="1.5">1.5x</button>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2 mt-5">
+      <button onclick="startRangePattern('A')" class="px-4 py-2 rounded-lg font-bold text-white bg-saffron">
+        1,1,2,2,3,3… (repeat each sloka)
+      </button>
+      <button onclick="startRangePattern('B')" class="px-4 py-2 rounded-lg font-bold text-white" style="background:#7c3aed;">
+        1,2,3,1,2,3… (repeat sequence)
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script src="app.js?v=29092026c"></script>
+
+</body>
+</html>

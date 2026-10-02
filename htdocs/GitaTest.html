@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bhagavad Gita – Sloka Test</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        saffron: '#ec6713',
+        parchment: '#f6ead7'
+      },
+      fontFamily: {
+        display: ['Manrope', 'Noto Sans Telugu', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;600;700&family=Noto+Serif+Telugu:wght@400;600&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* ─────────────────────────────────────────────
+   GitaTest page-specific styles
+   ───────────────────────────────────────────── */
+
+.gt-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+
+/* ─────────────────────────────────────────────
+   Header
+   ───────────────────────────────────────────── */
+
+.gt-page-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  margin-bottom: 24px;
+}
+
+.gt-back-link {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: #ec6713;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gt-back-link:hover {
+  text-decoration: underline;
+}
+
+.gt-page-title {
+  width: 70%;
+  margin: 0 auto;
+
+  color: #ec6713;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 800;
+
+  text-align: center;
+}
+
+.gt-header-spacer {
+  display: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   Labels
+   ───────────────────────────────────────────── */
+
+.gt-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #8a5a2b;
+  letter-spacing: .02em;
+  margin-bottom: .35rem;
+  display: block;
+}
+
+
+/* ─────────────────────────────────────────────
+   Select
+   ───────────────────────────────────────────── */
+
+.gt-select {
+  width: 100%;
+  padding: .65rem 1rem;
+  border-radius: 12px;
+  border: 2px solid #ecd9b8;
+  background: #fffaf0;
+  font-weight: 600;
+  outline: none;
+}
+
+.gt-select:focus {
+  border-color: #ec6713;
+}
+
+.gt-select:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  background: #f1e9d8;
+}
+
+
+/* ─────────────────────────────────────────────
+   Radio buttons
+   ───────────────────────────────────────────── */
+
+.gt-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+.gt-radio-pill {
+  position: relative;
+}
+
+.gt-radio-pill input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+
+.gt-radio-pill span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: .55rem 1.1rem;
+
+  border-radius: 9999px;
+  border: 2px solid #ecd9b8;
+  background: #fffaf0;
+
+  font-weight: 700;
+  font-size: .85rem;
+  color: #8a5a2b;
+
+  transition: all .15s ease;
+}
+
+.gt-radio-pill input:checked + span {
+  background: linear-gradient(135deg, #ec6713, #f59e42);
+  border-color: #ec6713;
+  color: #fff;
+
+  box-shadow: 0 4px 12px rgba(236,103,19,.4);
+}
+
+
+/* ─────────────────────────────────────────────
+   Primary button
+   ───────────────────────────────────────────── */
+
+.gt-btn-primary {
+  padding: .75rem 1.75rem;
+
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #ec6713, #f59e42);
+
+  color: #fff;
+  font-weight: 800;
+
+  box-shadow: 0 6px 16px rgba(236,103,19,.4);
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+
+  border: none;
+  cursor: pointer;
+}
+
+.gt-btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.gt-btn-primary:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   Secondary button
+   ───────────────────────────────────────────── */
+
+.gt-btn-secondary {
+  padding: .65rem 1.5rem;
+
+  border-radius: 9999px;
+  background: #fff;
+
+  color: #7c3aed;
+  font-weight: 800;
+
+  border: 2px solid #7c3aed;
+
+  box-shadow: 0 4px 12px rgba(124,58,237,.2);
+
+  cursor: pointer;
+
+  transition: transform .15s ease;
+}
+
+.gt-btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.gt-btn-secondary:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+
+  border-color: #c4b5fd;
+  color: #c4b5fd;
+}
+
+
+/* ─────────────────────────────────────────────
+   Stanza heading
+   ───────────────────────────────────────────── */
+
+.gt-stanza-heading {
+  font-weight: 800;
+  font-size: .78rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+
+  color: #7c3aed;
+
+  margin: .9rem 0 .4rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   Sloka lines
+   ───────────────────────────────────────────── */
+
+.gt-visible-line,
+.gt-hidden-line {
+  margin-bottom: .5rem;
+}
+
+.gt-visible-label,
+.gt-hidden-label {
+  display: block;
+
+  font-size: .7rem;
+  font-weight: 700;
+
+  color: #8a7457;
+
+  margin-bottom: .2rem;
+}
+
+.gt-sloka-text {
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
+  line-height: 1.7;
+}
+
+
+/* ─────────────────────────────────────────────
+   Hidden text
+   ───────────────────────────────────────────── */
+
+.gt-hidden-dots {
+  display: inline-block;
+
+  padding: .5rem 1rem;
+
+  border-radius: 10px;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #efe6d4,
+      #efe6d4 6px,
+      #e6d9bc 6px,
+      #e6d9bc 12px
+    );
+
+  color: #a8977a;
+
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .05em;
+}
+
+
+/* ─────────────────────────────────────────────
+   Error message
+   ───────────────────────────────────────────── */
+
+#errorMsg {
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   MOBILE RESPONSIVE
+   ───────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+
+  /* Header */
+
+  .gt-page-header {
+    min-height: 65px;
+    padding: 0 2px;
+  }
+
+  .gt-back-link {
+    left: 0;
+    font-size: .9rem;
+  }
+
+  .gt-page-title {
+    width: 68%;
+
+    font-size: 1.25rem;
+    line-height: 1.25;
+
+    text-align: center;
+  }
+
+
+  /* Card */
+
+  .gt-card {
+    border-radius: 14px;
+    padding: 1.1rem !important;
+  }
+
+
+  /* Radio buttons */
+
+  .gt-radio-group {
+    gap: .45rem;
+  }
+
+  .gt-radio-pill span {
+    padding: .5rem .8rem;
+    font-size: .78rem;
+  }
+
+
+  /* Generate button */
+
+  .gt-btn-primary {
+    padding: .7rem 1.4rem;
+  }
+
+
+  /* Sloka */
+
+  .gt-sloka-text {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+}
+
+
+/* ─────────────────────────────────────────────
+   VERY SMALL PHONES
+   ───────────────────────────────────────────── */
+
+@media (max-width: 380px) {
+
+  .gt-page-header {
+    min-height: 70px;
+  }
+
+  .gt-back-link {
+    font-size: .82rem;
+  }
+
+  .gt-page-title {
+    width: 65%;
+    font-size: 1.1rem;
+  }
+
+  .gt-card {
+    padding: .9rem !important;
+  }
+
+  .gt-radio-pill span {
+    padding: .45rem .65rem;
+    font-size: .75rem;
+  }
+
+}
+
+</style>
+<link rel="stylesheet" href="glass.css?v=1">
+<script src="glass.js?v=1" defer></script>
+</head>
+
+
+<body class="min-h-screen">
+
+
+<!--
+  Gita data
+  Telugu default + English/Hindi/Tamil/... in gita-data.js
+-->
+<script src="gita-data.js?v=29092026c"></script>
+
+
+<div class="max-w-3xl mx-auto p-6 fade">
+
+
+  <!-- ─────────────────────────────────────────
+       HEADER
+       ───────────────────────────────────────── -->
+
+  <div class="gt-page-header">
+
+    <a href="index.html" class="gt-back-link">
+      ← Back
+    </a>
+
+    <h1 class="gt-page-title">
+      Bhagavad Gita Sloka Test
+    </h1>
+
+    <div class="gt-header-spacer"></div>
+
+  </div>
+
+
+  <!-- ─────────────────────────────────────────
+       MAIN CARD
+       ───────────────────────────────────────── -->
+
+  <div class="gt-card p-6 md:p-8 space-y-6">
+
+
+    <!-- Difficulty -->
+
+    <div>
+
+      <span class="gt-label">
+        Difficulty Level
+      </span>
+
+      <div class="gt-radio-group">
+
+        <label class="gt-radio-pill">
+          <input
+            type="radio"
+            name="difficulty"
+            value="beginner"
+          >
+          <span>Beginner</span>
+        </label>
+
+
+        <label class="gt-radio-pill">
+          <input
+            type="radio"
+            name="difficulty"
+            value="easy"
+          >
+          <span>Easy</span>
+        </label>
+
+
+        <label class="gt-radio-pill">
+          <input
+            type="radio"
+            name="difficulty"
+            value="intermediate"
+          >
+          <span>Intermediate</span>
+        </label>
+
+
+        <label class="gt-radio-pill">
+          <input
+            type="radio"
+            name="difficulty"
+            value="advanced"
+          >
+          <span>Advanced</span>
+        </label>
+
+
+        <label class="gt-radio-pill">
+          <input
+            type="radio"
+            name="difficulty"
+            value="supreme"
+          >
+          <span>Supreme</span>
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <!-- Chapter -->
+
+    <div>
+
+      <span class="gt-label">
+        Chapter
+      </span>
+
+      <select
+        id="chapterSelect"
+        class="gt-select"
+      >
+
+        <option
+          value=""
+          disabled
+          selected
+        >
+          Select a chapter…
+        </option>
+
+      </select>
+
+
+      <p
+        id="chapterHelperText"
+        class="hidden text-xs font-semibold text-[#8a5a2b] mt-2"
+      >
+        Supreme level picks a random chapter automatically —
+        chapter selection is disabled.
+      </p>
+
+    </div>
+
+
+    <!-- Generate -->
+
+    <div class="flex items-center gap-4">
+
+      <button
+        id="generateBtn"
+        class="gt-btn-primary"
+      >
+        Generate
+      </button>
+
+      <span
+        id="errorMsg"
+        class="hidden"
+      ></span>
+
+    </div>
+
+
+    <!-- ─────────────────────────────────────────
+         RESULT
+         ───────────────────────────────────────── -->
+
+    <div
+      id="resultSection"
+      class="hidden border-t border-[#ecd9b8] pt-5"
+    >
+
+
+      <!-- Difficulty / Chapter -->
+
+      <div
+        class="flex items-center gap-3 mb-2 text-sm font-bold text-[#8a5a2b]"
+      >
+
+        <span id="difficultyLabel"></span>
+
+        <span>·</span>
+
+        <span id="chapterLabel"></span>
+
+      </div>
+
+
+      <!-- Sloka -->
+
+      <div class="sloka-box">
+
+
+        <!-- First Stanza -->
+
+        <div
+          id="firstStanzaHeading"
+          class="gt-stanza-heading"
+        >
+          First Stanza
+        </div>
+
+        <div id="firstStanzaBox"></div>
+
+
+        <!-- Second Stanza -->
+
+        <div
+          id="secondStanzaHeading"
+          class="gt-stanza-heading"
+        >
+          Second Stanza
+        </div>
+
+        <div id="secondStanzaBox"></div>
+
+
+        <!-- Full Sloka -->
+
+        <div
+          id="fullSlokaBox"
+          class="hidden"
+        ></div>
+
+      </div>
+
+
+      <!-- View Button -->
+
+      <div class="mt-5">
+
+        <button
+          id="viewBtn"
+          class="gt-btn-secondary hidden"
+        >
+          View
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!--
+  app.js defines:
+  - gitaData
+  - languageData
+  - chapterNames
+  - getLangData()
+  - currentLang
+-->
+
+<script src="app.js?v=29092026c"></script>
+
+<script src="gitatest.js?v=29092026c"></script>
+
+
+</body>
+</html>
